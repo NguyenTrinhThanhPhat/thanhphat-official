@@ -1,0 +1,54 @@
+﻿@model IEnumerable<thanhphat_bai2.Models.Book>
+
+@{
+    ViewData["Title"] = "ListBookModel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ListBookModel</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" border="1">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Title
+            </th>
+            <th>
+                Author
+            </th>
+            <th>
+                Images
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+ @foreach (var item in Model) {
+        <tr>
+            <td>
+                    @item.Id
+            </td>
+            <td>
+                    @item.Title
+            </td>
+            <td>
+                    @item.Author
+            </td>
+            <td>
+                    <img src="@item.ImageCover" width="95" />
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
